@@ -4,8 +4,7 @@ services:
   npm:
     image: 'jc21/nginx-proxy-manager:latest'
     container_name: npm
-    networks:
-      bridge:
+    network_mode: bridge
     hostname: npm
     ports:
       - '80:80'
@@ -19,8 +18,7 @@ services:
   nginx:
     image: nginx:latest
     container_name: nginx
-    networks:
-      bridge:
+    network_mode: bridge
     hostname: nginx
     ports:
       - "8080:80"

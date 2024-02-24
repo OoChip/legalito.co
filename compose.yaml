@@ -1,0 +1,29 @@
+version: '3.8'
+  
+services:
+  npm:
+    image: 'jc21/nginx-proxy-manager:latest'
+    container_name: npm
+    networks:
+      bridge:
+    hostname: npm
+    ports:
+      - '80:80'
+      - '81:81'
+      - '443:443'
+    volumes:
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt
+    restart: unless-stopped
+    
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    networks:
+      bridge:
+    hostname: nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - /var/www/html:/usr/share/nginx/html
+    restart: always

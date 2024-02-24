@@ -23,5 +23,5 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - /var/www/html:/usr/share/nginx/html
+      - /home/ec2-user/html:/usr/share/nginx/html
     restart: always
